@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -68,9 +69,7 @@ func APIWalk(config Config, githubUser GithubUser, url string) error {
 
 func ConvertToUnixTimestamp(date string) string {
 	dateTime, _ := time.Parse(time.RFC3339, date)
-	dateFormat := dateTime.Format("02/01/2006")
-	timeFormat := dateTime.Format("15:04:05")
-	return fmt.Sprintf("%s %s", dateFormat, timeFormat)
+	return strconv.FormatInt(dateTime.Unix(), 10)
 }
 
 func main() {
@@ -88,14 +87,6 @@ func main() {
 
 	var githubUser GithubUser
 	json.Unmarshal(responseBody, &githubUser)
-	firstPageURL := config.URL + "/repos/ImKK-000/workflow-designer/commits?page=1&sha=develop%402.x.x" + auth_token
-	APIWalk(config, githubUser, firstPageURL)
 
-	for _, response := range responseStore {
-		var gitCommits []GithubCommit
-		json.Unmarshal(response, &gitCommits)
-		for _, commit := range gitCommits {
-			fmt.Println(ConvertToUnixTimestamp(commit.CommitInformation.Committer.Date))
-		}
-	}
+	fmt.Println(ConvertToUnixTimestamp("2018-04-08T13:43:08Z"))
 }
