@@ -7,6 +7,25 @@
 	"item": [
 		{
 			"name": "Get Users Information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2500ead-f4b8-4d92-80de-688d3071ac31",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check Response OK\", function () {",
+							"    var githubUser = pm.response.json();",
+							"    pm.expect(githubUser.id).to.eql(15193133);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -15,12 +34,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:7443/users/imkk-000",
-					"protocol": "https",
+					"raw": "http://localhost:8882/users/imkk-000",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "7443",
+					"port": "8882",
 					"path": [
 						"users",
 						"imkk-000"
@@ -31,6 +50,25 @@
 		},
 		{
 			"name": "Get Repos Page=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b8d67e0-c8d4-42d5-9a64-b044bb45128f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check Response OK\", function () {",
+							"    var githubRepos = pm.response.json();",
+							"    pm.expect(githubRepos.length).to.eql(30);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -39,15 +77,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:7443/users/imkk-000/repos?page=1",
-					"protocol": "https",
+					"raw": "http://localhost:8882/user/15193133/repos?page=1",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "7443",
+					"port": "8882",
 					"path": [
-						"users",
-						"imkk-000",
+						"user",
+						"15193133",
 						"repos"
 					],
 					"query": [
@@ -62,6 +100,25 @@
 		},
 		{
 			"name": "Get Repos Page=2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba4aafa6-55d4-498a-8467-84e798c2b2ee",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check Response OK\", function () {",
+							"    var githubRepos = pm.response.json();",
+							"    pm.expect(githubRepos.length).to.eql(30);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -70,15 +127,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:7443/users/imkk-000/repos?page=2",
-					"protocol": "https",
+					"raw": "http://localhost:8882/user/15193133/repos?page=2",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "7443",
+					"port": "8882",
 					"path": [
-						"users",
-						"imkk-000",
+						"user",
+						"15193133",
 						"repos"
 					],
 					"query": [
@@ -93,6 +150,25 @@
 		},
 		{
 			"name": "Get Repos Page=3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebdbab08-631a-467a-87ac-b9bbc2f9e7e5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check Response OK\", function () {",
+							"    var githubRepos = pm.response.json();",
+							"    pm.expect(githubRepos.length).to.eql(30);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -101,15 +177,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:7443/users/imkk-000/repos?page=3",
-					"protocol": "https",
+					"raw": "http://localhost:8882/user/15193133/repos?page=3",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "7443",
+					"port": "8882",
 					"path": [
-						"users",
-						"imkk-000",
+						"user",
+						"15193133",
 						"repos"
 					],
 					"query": [
@@ -124,6 +200,25 @@
 		},
 		{
 			"name": "Get Repos Page=4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f2e50b9-aa1f-4902-819d-f8270995309f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check Response OK\", function () {",
+							"    var githubRepos = pm.response.json();",
+							"    pm.expect(githubRepos.length).to.eql(4);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -132,15 +227,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:7443/users/imkk-000/repos?page=4",
-					"protocol": "https",
+					"raw": "http://localhost:8882/user/15193133/repos?page=4",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "7443",
+					"port": "8882",
 					"path": [
-						"users",
-						"imkk-000",
+						"user",
+						"15193133",
 						"repos"
 					],
 					"query": [
