@@ -1,0 +1,6 @@
+pkg
+bin
+
+*.jar
+
+.DS_Store
