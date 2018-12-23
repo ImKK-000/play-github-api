@@ -1,0 +1,56 @@
+- request:
+    method: GET
+    url: /users/imkk-000
+
+  response:
+      headers:
+        Content-Type: application/json; charset=utf-8
+      file: data-user-imkk-000.json
+
+- request:
+    method: GET
+    url: /users/imkk-000/repos
+    query:
+      page: 1
+
+  response:
+      headers:
+        Content-Type: application/json; charset=utf-8
+        Link: <https://api.github.com/user/15193133/repos?page=2>; rel="next", <https://api.github.com/user/15193133/repos?page=4>; rel="last"
+      file: data-p1.json
+
+- request:
+    method: GET
+    url: /users/imkk-000/repos
+    query:
+      page: 2
+
+  response:
+      headers:
+        Content-Type: application/json; charset=utf-8
+        Link: <https://api.github.com/user/15193133/repos?page=1>; rel="prev", <https://api.github.com/user/15193133/repos?page=3>; rel="next", <https://api.github.com/user/15193133/repos?page=4>; rel="last", <https://api.github.com/user/15193133/repos?page=1>; rel="first"
+      file: data-p2.json
+
+- request:
+    method: GET
+    url: /users/imkk-000/repos
+    query:
+      page: 3
+
+  response:
+      headers:
+        Content-Type: application/json; charset=utf-8
+        Link: <https://api.github.com/user/15193133/repos?page=2>; rel="prev", <https://api.github.com/user/15193133/repos?page=4>; rel="next", <https://api.github.com/user/15193133/repos?page=4>; rel="last", <https://api.github.com/user/15193133/repos?page=1>; rel="first"
+      file: data-p3.json
+  
+- request:
+    method: GET
+    url: /users/imkk-000/repos
+    query:
+      page: 4
+
+  response:
+      headers:
+        Content-Type: application/json; charset=utf-8
+        Link: <https://api.github.com/user/15193133/repos?page=3>; rel="prev", <https://api.github.com/user/15193133/repos?page=1>; rel="first"
+      file: data-p4.json
