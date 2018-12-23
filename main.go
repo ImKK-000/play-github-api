@@ -14,6 +14,10 @@ type Config struct {
 	URL string `json:"url"`
 }
 
+type AuthConfig struct {
+	ClientID, ClientSecret string
+}
+
 type GithubUser struct {
 	ID uint `json:"id"`
 }
@@ -34,8 +38,7 @@ type Committer struct {
 }
 
 var responseStore [][]byte
-
-const AUTH_TOKEN = ""
+var auth_token string
 
 func APIWalk(config Config, githubUser GithubUser, url string) error {
 	response, _ := http.Get(url)
@@ -72,17 +75,20 @@ func ConvertToUnixTimestamp(date string) string {
 
 func main() {
 	rawConfig, _ := ioutil.ReadFile("config/api.json")
+	rawAuthConfig, _ := ioutil.ReadFile("config/auth.json")
 
 	var config Config
+	var authConfig AuthConfig
 	json.Unmarshal(rawConfig, &config)
+	json.Unmarshal(rawAuthConfig, authConfig)
+	auth_token = fmt.Sprintf("&client_id=%s&client_secret=%s", authConfig.ClientID, authConfig.ClientSecret)
 
 	response, _ := http.Get(config.URL + "/users/imkk-000")
 	responseBody, _ := ioutil.ReadAll(response.Body)
 
 	var githubUser GithubUser
 	json.Unmarshal(responseBody, &githubUser)
-
-	firstPageURL := config.URL + "/repos/ImKK-000/workflow-designer/commits?page=1&sha=develop%402.x.x" + AUTH_TOKEN
+	firstPageURL := config.URL + "/repos/ImKK-000/workflow-designer/commits?page=1&sha=develop%402.x.x" + auth_token
 	APIWalk(config, githubUser, firstPageURL)
 
 	for _, response := range responseStore {
