@@ -3,4 +3,5 @@ bin
 
 *.jar
 
+config/auth.json
 .DS_Store
